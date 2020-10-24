@@ -1,58 +1,55 @@
-<div class="mb20" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start">
-  <mat-card fxFlex="100">
-    100%
-  </mat-card>
-</div>
+<section id="sample-table" class="mat-elevation-z8 bg-white">
+ 
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Select" [(ngModel)]="selectedStatus" (ngModelChange)="onStatusSelection1()">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{ food.viewValue }}
+      </mat-option>
+    </mat-select>
+  
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" matSort class="w-100">
+    
+    <!-- <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container> -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row._id}} </td>
+    </ng-container>
 
-<div class="mb20" fxLayout="row" fxLayoutGap="20px">
-  <mat-card *ngFor="let i of [50, 50]" [fxFlex]="i">
-    {{i}}%
-  </mat-card>
-</div>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+    </ng-container>
 
-<div class="mb20" fxLayout="row" fxLayoutGap="20px">
-  <mat-card *ngFor="let i of [33.33, 33.33, 33.33]" [fxFlex]="i">
-    {{i}}%
-  </mat-card>
-</div>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+    </ng-container>
 
-<div class="mb20" fxLayout="row" fxLayoutGap="20px">
-  <mat-card *ngFor="let i of [25, 25, 25, 25]" [fxFlex]="i">
-    {{i}}%
-  </mat-card>
-</div>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status </th>
+      <td mat-cell *matCellDef="let row" [style.color]="row.section"> {{row.isMailSend}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element"> <button mat-raised-button (click)="getRecord(element.name)" color="primary" >Details</button> </td>
+    </ng-container>
 
-<div class="mb20" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
-  <mat-card *ngFor="let i of [12.5, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5]" [fxFlex]="i">
-    {{i}}%
-  </mat-card>
-</div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+  </table>
 
-<div class="mb20" fxLayout="row wrap" fxLayout.xs="column">
-  <mat-card fxFlex="15">
-    15%
-  </mat-card>
-  <mat-card fxFlex="25">
-    25%
-  </mat-card>
-  <mat-card fxFlex="60">
-    60%
-  </mat-card>
-</div>
-
-<div class="mb20" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>Sample Layout Page</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="assets/images/sample-layout.png" alt="sample layout">
-    <mat-card-content>
-      <p>
-        Application Shell using Angular Flex Layout
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <a mat-flat-button routerLink="/sample-layout">Take a look!</a>
-    </mat-card-actions>
-  </mat-card>
-</div>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</section>

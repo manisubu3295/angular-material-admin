@@ -5,49 +5,57 @@ export const childRoutes = [
       import('./dashboard/dashboard.module').then(m => m.DashboardModule),
     data: { icon: 'dashboard', text: 'Dashboard' }
   },
-  {
-    path: 'charts',
-    loadChildren: () =>
-      import('./charts/charts.module').then(m => m.ChartsModule),
-    data: { icon: 'bar_chart', text: 'Charts' }
-  },
+  // ,
+  
   {
     path: 'tables',
     loadChildren: () =>
       import('./tables/tables.module').then(m => m.TablesModule),
-    data: { icon: 'table_chart', text: 'Tables' }
+    data: { icon: 'table_chart', text: 'Available Users' }
   },
+  // {
+  //   path: 'forms',
+  //   loadChildren: () => import('./forms/forms.module').then(m => m.FormsModule),
+  //   data: { icon: 'assignment', text: 'Forms' }
+  // },
   {
-    path: 'forms',
-    loadChildren: () => import('./forms/forms.module').then(m => m.FormsModule),
-    data: { icon: 'assignment', text: 'Forms' }
-  },
-  {
-    path: 'mat-grid',
+    path: 'mailDetail',
     loadChildren: () =>
       import('./mat-grid/mat-grid.module').then(m => m.MatGridModule),
-    data: { icon: 'grid_on', text: 'Flex Grid' }
+    data: { icon: 'grid_on', text: 'Mail Details' }
   },
   {
-    path: 'mat-components',
-    loadChildren: () =>
-      import('./mat-components/mat-components.module').then(
-        m => m.MatComponentsModule
-      ),
-    data: { icon: 'code', text: 'Material Components' }
-  },
-  {
-    path: 'animations',
-    loadChildren: () =>
-      import('./animations/animations.module').then(m => m.AnimationsModule),
-    data: { icon: 'perm_media', text: 'Animations' }
-  },
-  {
-    path: 'google-maps',
-    loadChildren: () =>
-      import('./google-map-demo/google-map-demo.module').then(
+       path: 'userRole',
+       loadChildren: () =>
+       import('./google-map-demo/google-map-demo.module').then(
         m => m.GoogleMapDemoModule
-      ),
-    data: { icon: 'place', text: 'Google Maps' }
+        ),
+       data: { icon: 'place', text: 'User Role' }
+     }, {
+    path: 'profile',
+    loadChildren: () => import('./forms/forms.module').then(m => m.FormsModule),
+   
   }
+  // {
+  //   path: 'mat-components',
+  //   loadChildren: () =>
+  //     import('./mat-components/mat-components.module').then(
+  //       m => m.MatComponentsModule
+  //     ),
+  //   data: { icon: 'code', text: 'Material Components' }
+  // },
+  // {
+  //   path: 'animations',
+  //   loadChildren: () =>
+  //     import('./animations/animations.module').then(m => m.AnimationsModule),
+  //   data: { icon: 'perm_media', text: 'Animations' }
+  // },
+  // {
+  //   path: 'google-maps',
+  //   loadChildren: () =>
+  //     import('./google-map-demo/google-map-demo.module').then(
+  //       m => m.GoogleMapDemoModule
+  //     ),
+  //   data: { icon: 'place', text: 'Google Maps' }
+  // }
 ];

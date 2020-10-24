@@ -1,7 +1,8 @@
-# Angular Material Admin
+Angular8MailScheduler
 
-## [Demo](https://angular-material-admin.firebaseapp.com)
+Start Mail Scheduler
+Start Angular app & install required dependencies
 
-[![Build Status](https://img.shields.io/travis/changhuixu/angular-material-admin/master.svg?label=Travis%20CI&style=flat-square)](https://travis-ci.org/changhuixu/angular-material-admin)
-
-![Dashboard Screenshot](./img/dashboard.png)
+git clone https://github.com/manisubu3295/angular8mailschduler.git
+Run npm install from the root of the project
+run ng serve --open to start angular
